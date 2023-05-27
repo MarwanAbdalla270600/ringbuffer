@@ -2,7 +2,7 @@
 #define SHARED_MEMORY_H
 
 #define BLOCK_SIZE 4096
-#define FILENAME "sharedMemory.txt"
+#define FILENAME "memory/sharedMemory.txt"
 #include <stdbool.h>
 
 char* attachMemoryBlock(char* filename, int size);
