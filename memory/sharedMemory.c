@@ -42,3 +42,16 @@ char *attachMemoryBlock(char *filename, int size)
     }
     return result;
 }
+
+bool detachMemoryBlock(char* block) {
+    return (shmdt(block) != IPC_RESULT_ERROR);
+}
+
+bool destroyMemoryBlock(char* filename) {
+    int sharedBlockId = getSharedBlock(filename, 0);
+
+    if(sharedBlockId == IPC_RESULT_ERROR) {
+        return NULL;
+    }
+    return (shmctl(sharedBlockId, IPC_RMID, NULL) != IPC_RESULT_ERROR);
+}
