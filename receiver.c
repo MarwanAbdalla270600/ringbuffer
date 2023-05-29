@@ -14,15 +14,16 @@ int main(int argc, char*argv[]) {
         return -1;
     }
 
-    char *block = attachMemoryBlock(FILENAME, BLOCK_SIZE);
+    queue *block = attachMemoryBlock(FILENAME, BLOCK_SIZE);
     if(block == NULL) {
         perror("ERROR: could not get block\n");
         return -1;
     }
     //q = block;
 
-    printf("Reading: %s\n", block);
-
+    printf("Reading: %d\n", block->maxsize);
+    printf("Reading: %d\n", block->rear);
+    printQueue(block);
     detachMemoryBlock(block);
     return 0;
 }

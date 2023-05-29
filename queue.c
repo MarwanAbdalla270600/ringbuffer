@@ -10,7 +10,7 @@ queue *newQueue(int size)
     queue *pt = NULL;
     pt = malloc(sizeof(queue *));
 
-    pt->items = (int *)malloc(size * sizeof(int));
+    pt->items = (char *)malloc(size * sizeof(char));
     pt->maxsize = size;
     pt->front = 0;
     pt->rear = -1;
@@ -32,7 +32,7 @@ bool isEmpty(queue *pt)
 }
 
 // Utility function to return the front element of the queue
-int front(queue *pt)
+char front(queue *pt)
 {
     if (isEmpty(pt))
     {
@@ -44,7 +44,7 @@ int front(queue *pt)
 }
 
 // Utility function to add an element `x` to the queue
-void enqueue(queue *pt, int x)
+void enqueue(queue *pt, char x)
 {
     if (size(pt) == pt->maxsize)
     {
@@ -52,7 +52,7 @@ void enqueue(queue *pt, int x)
         exit(EXIT_FAILURE);
     }
 
-    printf("Inserting %d\t", x);
+    printf("Inserting %c\t", x);
 
     pt->rear = (pt->rear + 1) % pt->maxsize; // circular queue
     pt->items[pt->rear] = x;
@@ -70,13 +70,22 @@ void dequeue(queue *pt)
         exit(EXIT_FAILURE);
     }
 
-    printf("Removing %d\t", front(pt));
+    printf("Removing %c\t", front(pt));
 
     pt->front = (pt->front + 1) % pt->maxsize; // circular queue
     pt->size--;
 
     printf("front = %d, rear = %d\n", pt->front, pt->rear);
 }
+
+
+void printQueue(queue *pt) {
+    printf("\tQUEUE\n");
+    for(int i=pt->front; i<=pt->rear; i++) {
+        printf("\t%c\tindex = %i\n", pt->items[i], i);
+    }
+}
+
 
 /* int main()
 {

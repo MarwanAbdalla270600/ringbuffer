@@ -5,7 +5,7 @@
 #include <stdbool.h>
 typedef struct
 {
-    int *items;  // array to store queue elements
+    char *items;  // array to store queue elements
     int maxsize; // maximum capacity of the queue
     int front;   // front points to the front element in the queue (if any)
     int rear;    // rear points to the last element in the queue
@@ -18,11 +18,12 @@ int size(queue *pt);
 
 bool isEmpty(queue *pt);
 
-int front(queue *pt);
+char front(queue *pt);
 
-void enqueue(queue *pt, int x);
+void enqueue(queue *pt, char x);
 
 void dequeue(queue *pt);
 
+void printQueue(queue *pt);
 
 #endif

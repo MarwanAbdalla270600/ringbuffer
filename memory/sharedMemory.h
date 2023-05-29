@@ -5,9 +5,9 @@
 #define FILENAME "memory/sharedMemory.txt"
 #include <stdbool.h>
 
-char* attachMemoryBlock(char* filename, int size);
+queue *attachMemoryBlock(char *filename, int size);
 
-bool detachMemoryBlock(char* block);
+bool detachMemoryBlock(queue* block);
 
 bool destroyMemoryBlock(char* filename);
 
