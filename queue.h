@@ -22,7 +22,7 @@ bool isEmpty(queue *pt);
 
 char front(queue *pt);
 
-void enqueue(queue *pt, char x);
+bool enqueue(queue *pt, char x);
 
 bool dequeue(queue *pt);
 

@@ -42,12 +42,12 @@ char front(queue *pt)
 }
 
 // Utility function to add an element `x` to the queue
-void enqueue(queue *pt, char x)
+bool enqueue(queue *pt, char x)
 {
     if (size(pt) == pt->maxsize)
     {
         printf("Overflow\nProgram Terminated\n");
-        exit(EXIT_FAILURE);
+        return false;
     }
 
     printf("Inserting %c\t", x);
@@ -57,6 +57,7 @@ void enqueue(queue *pt, char x)
     pt->size++;
 
     printf("front = %d, rear = %d\n", pt->front, pt->rear);
+    return true;
 }
 
 // Utility function to dequeue the front element
