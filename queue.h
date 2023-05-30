@@ -24,7 +24,7 @@ char front(queue *pt);
 
 void enqueue(queue *pt, char x);
 
-void dequeue(queue *pt);
+bool dequeue(queue *pt);
 
 void printQueue(queue *pt);
 

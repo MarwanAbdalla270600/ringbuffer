@@ -4,6 +4,7 @@
 #define BLOCK_SIZE 4096
 #define FILENAME "memory/sharedMemory.txt"
 #include <stdbool.h>
+#include "../queue.h"
 
 queue *attachMemoryBlock(char *filename, int size);
 

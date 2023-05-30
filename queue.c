@@ -60,12 +60,12 @@ void enqueue(queue *pt, char x)
 }
 
 // Utility function to dequeue the front element
-void dequeue(queue *pt)
+bool dequeue(queue *pt)
 {
     if (isEmpty(pt)) // front == rear
     {
         printf("Underflow\nProgram Terminated\n");
-        exit(EXIT_FAILURE);
+        return false;
     }
 
     printf("Removing %c\t", front(pt));
@@ -74,10 +74,15 @@ void dequeue(queue *pt)
     pt->size--;
 
     printf("front = %d, rear = %d\n", pt->front, pt->rear);
+    return true;
 }
 
 
 void printQueue(queue *pt) {
+    if(pt->size == 0) {
+        printf("QUEUE IS EMPTY\n");
+        return;
+    }
     printf("\tQUEUE\n");
     for(int i=pt->front; i<=pt->rear; i++) {
         printf("\t%c\tindex = %i\n", pt->items[i], i);

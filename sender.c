@@ -33,7 +33,6 @@ int main(int argc, char*argv[]) {
    
     *block = *pt;
 
-    printQueue(block);
 
     detachMemoryBlock(block);
     return 0;
