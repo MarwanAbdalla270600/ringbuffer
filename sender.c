@@ -33,6 +33,7 @@ int main(int argc, char*argv[]) {
    
     *block = *pt;
 
+    free(pt);
 
     detachMemoryBlock(block);
     return 0;

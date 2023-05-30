@@ -24,9 +24,8 @@ int main(int argc, char*argv[]) {
     printf("%d\n", block->size);
 
     
-    while(dequeue(block));
-    
-        
+    while(dequeue(block)== true);
+     
 
     detachMemoryBlock(block);
     return 0;
