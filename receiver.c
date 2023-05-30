@@ -24,9 +24,11 @@ int main(int argc, char*argv[]) {
 
     printf("Reading: %d\n", block->maxsize);
     printf("Reading: %d\n", block->rear);
-    printf("%c", block->items[0]);
 
-    printQueue(block);
+    for(int i=0; i<block->size; i++) {
+       dequeue(block);
+    }
+    //printQueue(block);
     detachMemoryBlock(block);
     return 0;
 }

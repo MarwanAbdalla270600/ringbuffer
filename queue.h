@@ -3,7 +3,7 @@
 
 // Data structure to represent a queue
 #include <stdbool.h>
-#define buffersize 10
+#define buffersize 100
 
 typedef struct
 {
