@@ -5,6 +5,7 @@
 #include "queue.h"
 #include "memory/sharedMemory.h"
 
+
 int main(int argc, char*argv[]) {
 
     //queue* q;
@@ -23,6 +24,8 @@ int main(int argc, char*argv[]) {
 
     printf("Reading: %d\n", block->maxsize);
     printf("Reading: %d\n", block->rear);
+    printf("%c", block->items[0]);
+
     printQueue(block);
     detachMemoryBlock(block);
     return 0;

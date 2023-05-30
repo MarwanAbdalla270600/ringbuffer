@@ -21,8 +21,7 @@ int main(int argc, char*argv[]) {
     enqueue(pt, 'c');
     enqueue(pt, 'd');
 
-
-
+    
 
     queue* block = attachMemoryBlock(FILENAME, BLOCK_SIZE);
     //block->items = (char*) malloc(sizeof(char) * 100);

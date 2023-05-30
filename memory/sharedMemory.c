@@ -34,7 +34,7 @@ queue *attachMemoryBlock(char *filename, int size)
     {
         return NULL;
     }
-
+    
     // map the shared block into this process's memory and give me a pointer to it
     result = (queue*) shmat(sharedBlockId, NULL, 0);
     if (result == (queue *)IPC_RESULT_ERROR)

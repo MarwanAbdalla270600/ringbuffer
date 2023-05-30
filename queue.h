@@ -3,9 +3,11 @@
 
 // Data structure to represent a queue
 #include <stdbool.h>
+#define buffersize 10
+
 typedef struct
 {
-    char *items;  // array to store queue elements
+    char items[buffersize];  // array to store queue elements
     int maxsize; // maximum capacity of the queue
     int front;   // front points to the front element in the queue (if any)
     int rear;    // rear points to the last element in the queue

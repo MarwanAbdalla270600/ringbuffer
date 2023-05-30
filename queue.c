@@ -8,9 +8,7 @@
 queue *newQueue(int size)
 {
     queue *pt = NULL;
-    pt = malloc(sizeof(queue *));
-
-    pt->items = (char *)malloc(size * sizeof(char));
+    pt = malloc(sizeof(queue));
     pt->maxsize = size;
     pt->front = 0;
     pt->rear = -1;
@@ -85,35 +83,3 @@ void printQueue(queue *pt) {
         printf("\t%c\tindex = %i\n", pt->items[i], i);
     }
 }
-
-
-/* int main()
-{
-    queue *pt = newQueue(5);
-
-    enqueue(pt, 1);
-    enqueue(pt, 2);
-    enqueue(pt, 3);
-    enqueue(pt, 4);
-
-    dequeue(pt);
-    dequeue(pt);
-    dequeue(pt);
-    dequeue(pt);
-
-    enqueue(pt, 5);
-    enqueue(pt, 6);
-
-    printf("size = %d\n", size(pt));
-
-    if (isEmpty(pt))
-    {
-        printf("The queue is empty");
-    }
-    else
-    {
-        printf("The queue is not empty");
-    }
-
-    return 0;
-} */
