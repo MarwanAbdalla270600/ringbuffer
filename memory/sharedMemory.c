@@ -17,14 +17,12 @@ static int getSharedBlock(char *filename, int size)
     // Request a key
     // The key is linked to a filename, so that other programs can access it
     key = ftok(filename, 0);
-    if (key == IPC_RESULT_ERROR)
-    {
-        return IPC_RESULT_ERROR;
-    }
 
     // get shared block --- create it if it doesn't exist
-    return shmget(key, size, 0644 | IPC_CREAT);
+
+    return key == IPC_RESULT_ERROR? IPC_RESULT_ERROR : shmget(key, size, 0644 | IPC_CREAT);
 }
+
 
 queue *attachMemoryBlock(char *filename, int size)
 {
