@@ -38,7 +38,7 @@ int main(int argc, char*argv[]) {
 
     while (true) {
         sem_wait(sem_sender);
-        sleep(1);
+        //sleep(1); enable for showcase
         dequeue(block);
         sem_post(sem_receiver);
     }
