@@ -28,6 +28,11 @@ bool isEmpty(queue *pt)
     return !size(pt);
 }
 
+bool isFull(queue *pt)
+{
+    return pt->size == pt->maxsize;
+}
+
 // Utility function to return the front element of the queue
 char front(queue *pt)
 {
@@ -45,7 +50,7 @@ bool enqueue(queue *pt, char x)
 {
     if (size(pt) == pt->maxsize)
     {
-        printf("Overflow\nProgram Terminated\n");
+        //printf("Overflow\nProgram Terminated\n");
         return false;
     }
 
@@ -64,7 +69,7 @@ bool dequeue(queue *pt)
 {
     if (isEmpty(pt)) // front == rear
     {
-        printf("Underflow\nProgram Terminated\n");
+        //printf("Underflow\nProgram Terminated\n");
         return false;
     }
 

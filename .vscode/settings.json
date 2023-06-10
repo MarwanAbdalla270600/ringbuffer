@@ -1,5 +1,6 @@
 {
     "files.associations": {
-        "sharedmemory.h": "c"
+        "sharedmemory.h": "c",
+        "fcntl.h": "c"
     }
 }
