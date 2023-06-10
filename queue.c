@@ -2,17 +2,17 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "queue.h"
+#include "memory/sharedMemory.h"
 
 
 // Utility function to initialize a queue
 queue *newQueue(int size)
 {
-    queue *pt = malloc(sizeof(queue*) + (size * sizeof(char)));;
+    queue *pt = attachMemoryBlock("memory/sharedMemory.txt", BLOCK_SIZE);
     pt->maxsize = size;
     pt->front = 0;
     pt->rear = -1;
     pt->size = 0;
-
     return pt;
 }
 

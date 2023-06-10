@@ -1,11 +1,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-
+#include <sys/mman.h>
 #include "queue.h"
 #include "memory/sharedMemory.h"
 
 int main(int argc, char*argv[]) {
+
 
    
     if(argc > 2) {
@@ -14,25 +15,20 @@ int main(int argc, char*argv[]) {
     }
 
     int maxElements = atoi(argv[1]);
-    queue *pt = newQueue(maxElements);
+    int buffer = sizeof(queue) + (maxElements * sizeof(char));
 
-    int c;
 
-    while((c = getchar()) != EOF && enqueue(pt, c));
+    queue *ringbuffer = newQueue(maxElements);
     
-
-    queue* block = attachMemoryBlock(FILENAME, BLOCK_SIZE);
-    
-    if(block == NULL) {
+    if(ringbuffer == NULL) {
         perror("ERROR: could not get block\n");
         return -1;
     }
-   
-    *block = *pt;
-    strcpy(block->items, pt->items);
 
-    free(pt);
+    int c;
 
-    detachMemoryBlock(block);
+    while((c = getchar()) != EOF && enqueue(ringbuffer, c));
+    
+    detachMemoryBlock(ringbuffer);
     return 0;
 }
