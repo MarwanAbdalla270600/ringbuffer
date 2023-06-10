@@ -40,7 +40,7 @@ int main(int argc, char*argv[]) {
 
 
     while((c = getchar()) != EOF) {
-        //sleep(1); enable for showcase
+        //sleep(1); //enable for showcase
         if(!enqueue(ringbuffer, c)) {
             firsttime = false;
             sem_wait(sem_receiver);   //wait for the consumer to have an open slot
