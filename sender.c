@@ -13,16 +13,15 @@ int main(int argc, char*argv[]) {
         return -1;
     }
 
+    int maxElements = atoi(argv[1]);
 
-
-    queue *pt = newQueue(buffersize);
+    queue *pt = newQueue(maxElements);
 
     int c;
 
     while((c = getchar()) != EOF) {
         enqueue(pt, c);
     }
-
 
     queue* block = attachMemoryBlock(FILENAME, BLOCK_SIZE);
     
@@ -32,6 +31,7 @@ int main(int argc, char*argv[]) {
     }
    
     *block = *pt;
+    strcpy(block->items, pt->items);
 
     free(pt);
 

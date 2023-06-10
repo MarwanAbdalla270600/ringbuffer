@@ -7,8 +7,7 @@
 // Utility function to initialize a queue
 queue *newQueue(int size)
 {
-    queue *pt = NULL;
-    pt = malloc(sizeof(queue));
+    queue *pt = malloc(sizeof(queue*) + (size * sizeof(char)));;
     pt->maxsize = size;
     pt->front = 0;
     pt->rear = -1;
