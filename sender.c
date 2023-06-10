@@ -40,13 +40,16 @@ int main(int argc, char*argv[]) {
 
 
     while((c = getchar()) != EOF) {
-        sleep(1);
-        if(!enqueue(ringbuffer, c)) {
-            firsttime = false;
-            sem_wait(sem_receiver);   //wait for the consumer to have an open slot
+        //sleep(1);
 
-        }
-        if(!firsttime) sem_post(sem_sender);    //signal that something has been produced
+        enqueue(ringbuffer, c);
+            //firsttime = false;
+            if(isFull(ringbuffer)) {
+                sem_wait(sem_sender);   //wait for the consumer to have an open slot
+                sem_post(sem_receiver);
+            }
+
+
     }
 
    

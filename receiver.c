@@ -37,10 +37,10 @@ int main(int argc, char*argv[]) {
     }
 
     while (true) {
-        sem_wait(sem_sender);
+        sem_wait(sem_receiver);
         //sleep(1);
         dequeue(block);
-        sem_post(sem_receiver);
+        sem_post(sem_sender);
     }
      
     sem_close(sem_sender);
