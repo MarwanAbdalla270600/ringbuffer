@@ -8,7 +8,8 @@
 
 int main(int argc, char*argv[]) {
 
-   
+    bool firsttime = true;
+
     if(argc != 2) {
         perror("ERROR: Invalid Argument\n\n");
         return -1;
@@ -43,11 +44,13 @@ int main(int argc, char*argv[]) {
 
 
     while((c = getchar()) != EOF) {
+        sleep(1);
         if(!enqueue(ringbuffer, c)) {
+            firsttime = false;
             sem_wait(sem_receiver);   //wait for the consumer to have an open slot
 
         }
-        sem_post(sem_sender);    //signal that something has been produced
+        if(!firsttime) sem_post(sem_sender);    //signal that something has been produced
     }
 
    

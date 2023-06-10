@@ -4,7 +4,6 @@
 // Data structure to represent a queue
 #include <stdbool.h>
 #include <semaphore.h>
-#define buffersize 100
 #define SEM_SENDER "/mysender"
 #define SEM_RECEIVER "/myreceiver"
 
