@@ -29,11 +29,7 @@ int main(int argc, char*argv[]) {
     }
 
     int maxElements = atoi(argv[1]);
-    //int buffer = sizeof(queue) + (maxElements * sizeof(char));
-
-
     queue *ringbuffer = newQueue(maxElements);
-    //sem_init(ringbuffer->semaphore, 1, 0);
     
     if(ringbuffer == NULL) {
         perror("ERROR: could not get block\n");
