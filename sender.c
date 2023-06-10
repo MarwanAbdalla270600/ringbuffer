@@ -14,7 +14,6 @@ int main(int argc, char*argv[]) {
     }
 
     int maxElements = atoi(argv[1]);
-
     queue *pt = newQueue(maxElements);
 
     int c;
