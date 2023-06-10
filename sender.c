@@ -19,9 +19,8 @@ int main(int argc, char*argv[]) {
 
     int c;
 
-    while((c = getchar()) != EOF) {
-        enqueue(pt, c);
-    }
+    while((c = getchar()) != EOF && enqueue(pt, c));
+    
 
     queue* block = attachMemoryBlock(FILENAME, BLOCK_SIZE);
     
