@@ -6,8 +6,6 @@
 
 #include <stdbool.h>
 #include <semaphore.h>
-#include <sys/sem.h>
-#include <fcntl.h>
 #include <unistd.h>
 #include "../queue.h"
 

@@ -3,6 +3,7 @@
 #include <string.h>
 #include <sys/mman.h>
 #include <semaphore.h>
+#include <sys/sem.h>
 #include "queue.h"
 #include "memory/sharedMemory.h"
 
@@ -14,12 +15,6 @@ int main(int argc, char*argv[]) {
         return -1;
     }
 
-    sem_t *sem_ready;
-    sem_open(SEM_READY, O_CREAT, 0666, 1);
-
-    sem_t *sem_wait;
-    sem_open(SEM_WAIT, O_CREAT, 0666, 0);
-
     int maxElements = atoi(argv[1]);
     queue *ringbuffer = newQueue(maxElements);
     
@@ -30,10 +25,10 @@ int main(int argc, char*argv[]) {
 
     int c;
 
+    while((c = getchar()) != EOF) {
+        enqueue(ringbuffer, c);
+    }
 
-    while((c = getchar()) != EOF && enqueue(ringbuffer, c));
-
-   
     detachMemoryBlock(ringbuffer);
     return 0;
 }

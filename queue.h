@@ -3,9 +3,6 @@
 
 // Data structure to represent a queue
 #include <stdbool.h>
-#include <semaphore.h>
-#define SEM_READY "/mysender"
-#define SEM_WAIT "/myreceiver"
 
 typedef struct
 {
