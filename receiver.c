@@ -1,27 +1,21 @@
+#include "ringbuffer.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "queue.h"
-#include "memory/sharedMemory.h"
+#include "sharedMemory.h"
 
 int main(int argc, char *argv[])
 {
 
-    if (argc != 1)
-    {
-        perror("ERROR: Invalid Argument\n\n");
-        return -1;
-    }
-
-    queue *block = attachMemoryBlock(FILENAME, BLOCK_SIZE);
-    if (block == NULL)
+    ringbuffer *memory = attachMemoryBlock(FILENAME, BLOCK_SIZE);
+    if (memory == NULL)
     {
         perror("ERROR: could not get block\n");
         return -1;
     }
 
-    while (dequeue(block));
+    while (dequeue(memory));
 
-    detachMemoryBlock(block);
+    detachMemoryBlock(memory);
     return 0;
 }

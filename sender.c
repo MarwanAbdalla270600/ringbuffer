@@ -1,24 +1,17 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <sys/mman.h>
-#include <semaphore.h>
-#include <sys/sem.h>
-#include "queue.h"
-#include "memory/sharedMemory.h"
+#include "sharedMemory.h"
+#include "ringbuffer.h"
+
 
 int main(int argc, char*argv[]) {
 
-
-    if(argc != 2) {
-        perror("ERROR: Invalid Argument\n\n");
-        return -1;
-    }
-
-    int maxElements = atoi(argv[1]);
-    queue *ringbuffer = newQueue(maxElements);
+    int size = atoi(argv[1]);
+    ringbuffer *ringbufferVar = newringbuffer(size);
     
-    if(ringbuffer == NULL) {
+    ringbuffer *memory = attachMemoryBlock("sharedMemory.txt", BLOCK_SIZE);
+    if(memory == NULL) {
         perror("ERROR: could not get block\n");
         return -1;
     }
@@ -26,13 +19,13 @@ int main(int argc, char*argv[]) {
     int c;
 
     while((c = getchar()) != EOF) {
-        if(!enqueue(ringbuffer, c)) {
-            printf("Queue is to small\n");
-            break;
-        }
-        
+        enqueue(ringbufferVar, c);
     }
+        
+    
+    *memory = *ringbufferVar;
+    strcpy(memory->items, ringbufferVar->items);
 
-    detachMemoryBlock(ringbuffer);
+    detachMemoryBlock(memory);
     return 0;
 }

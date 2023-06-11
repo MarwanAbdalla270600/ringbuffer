@@ -1,6 +1,3 @@
-Diese Version ist ohne Semaphoren, da diese nicht korrekt bei mir funktioniert haben.
-in input.txt befinden sich 590 characters
-./script.sh     zum komplilieren der dateien
-./sender x < input.txt      x... größe des ringbuffers
-./receiver      entehrt den ringbuffer
-./destroy       zerstört den sharedMemory
+gcc -Wall -Wextra -pedantic -Wno-unused-parameter ringbuffer.c sharedMemory.c sender.c -o ./sender
+
+gcc -Wall -Wextra -pedantic -Wno-unused-parameter ringbuffer.c sharedMemory.c receiver.c -o ./receiver
