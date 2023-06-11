@@ -14,8 +14,8 @@ int main(int argc, char*argv[]) {
     }
 
     //setup some semaphore
-    sem_unlink(SEM_RECEIVER);
-    sem_unlink(SEM_SENDER);
+    //sem_unlink(SEM_RECEIVER);
+    //sem_unlink(SEM_SENDER);
 
     sem_t *sem_sender = sem_open(SEM_SENDER, O_CREAT, 0660, 0);
     if(sem_sender == SEM_FAILED) {

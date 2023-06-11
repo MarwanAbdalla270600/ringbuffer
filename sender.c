@@ -16,7 +16,7 @@ int main(int argc, char*argv[]) {
     }
 
     //setup some semaphore
-    sem_t *sem_sender = sem_open(SEM_SENDER, O_CREAT, 0660, 0);
+    sem_t *sem_sender = sem_open(SEM_SENDER, O_CREAT, 0660, 1);
     if(sem_sender == SEM_FAILED) {
         perror("sem_open/sender");
         exit(EXIT_FAILURE);
