@@ -8,8 +8,6 @@
 
 int main(int argc, char*argv[]) {
 
-    int firsttime = 0;
-
     if(argc != 2) {
         perror("ERROR: Invalid Argument\n\n");
         return -1;
