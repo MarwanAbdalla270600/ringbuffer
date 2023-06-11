@@ -8,7 +8,7 @@
 
 int main(int argc, char*argv[]) {
 
-    bool firsttime = true;
+    int firsttime = 0;
 
     if(argc != 2) {
         perror("ERROR: Invalid Argument\n\n");
@@ -22,7 +22,7 @@ int main(int argc, char*argv[]) {
         exit(EXIT_FAILURE);
     }
 
-    sem_t *sem_receiver = sem_open(SEM_RECEIVER, O_CREAT, 0660, 1);
+    sem_t *sem_receiver = sem_open(SEM_RECEIVER, O_CREAT, 0660, 0);
     if(sem_receiver == SEM_FAILED) {
         perror("sem_open/receiver");
         exit(EXIT_FAILURE);
@@ -40,15 +40,10 @@ int main(int argc, char*argv[]) {
 
 
     while((c = getchar()) != EOF) {
-        //sleep(1);
 
-        enqueue(ringbuffer, c);
-            //firsttime = false;
-            if(isFull(ringbuffer)) {
-                sem_wait(sem_sender);   //wait for the consumer to have an open slot
-                sem_post(sem_receiver);
-            }
-
+       sem_wait(sem_receiver);
+       enqueue(ringbuffer, c);
+       sem_post(sem_sender);
 
     }
 
