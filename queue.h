@@ -4,8 +4,8 @@
 // Data structure to represent a queue
 #include <stdbool.h>
 #include <semaphore.h>
-#define SEM_SENDER "/mysender"
-#define SEM_RECEIVER "/myreceiver"
+#define SEM_READY "/mysender"
+#define SEM_WAIT "/myreceiver"
 
 typedef struct
 {
@@ -13,7 +13,6 @@ typedef struct
     int front;   // front points to the front element in the queue (if any)
     int rear;    // rear points to the last element in the queue
     int size;    // current capacity of the queue
-    int semaphore;
     char items[];  // array to store queue elements
 } queue;
 

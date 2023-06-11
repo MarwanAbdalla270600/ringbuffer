@@ -8,7 +8,7 @@
 // Utility function to initialize a queue
 queue *newQueue(int size)
 {
-    queue *pt = attachMemoryBlock("memory/sharedMemory.txt", BLOCK_SIZE);
+    queue *pt = attachMemoryBlock(FILENAME, BLOCK_SIZE);
     pt->maxsize = size;
     pt->front = 0;
     pt->rear = -1;
