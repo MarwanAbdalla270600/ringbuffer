@@ -26,7 +26,11 @@ int main(int argc, char*argv[]) {
     int c;
 
     while((c = getchar()) != EOF) {
-        enqueue(ringbuffer, c);
+        if(!enqueue(ringbuffer, c)) {
+            printf("Queue is to small\n");
+            break;
+        }
+        
     }
 
     detachMemoryBlock(ringbuffer);
